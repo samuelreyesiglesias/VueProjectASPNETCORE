@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Vue Testing Project";
+}
+
+<div class="row">
+    <div id="app">
+        Name: {{NameProperty}}
+        <br />
+        Last Name: {{LastNameProperty}}
+        <br />
+        Country: {{Country}}
+        <br />
+        Address: {{Address.Department}}, {{Address.SpecificReference}}
+        <br />
+        Profession/Ocupation: {{Occupation}}
+    </div>
+</div>
+
+
+<br /><br />
+<!--
+Nota: para usar vue.js lo hacemos referenciando en el archivo layouts.cshtml el cdn de la libreria de vue...
+en el archivo que vamos a utilizar vue, debemos crear una seccion o render section para que se nos cargue al momento
+que se cargan los scripts tal ... definimos un objeto vue con la palabra new Vue{y definimos las propiedades el:"#iddelelemento", y data:{aqui el objeto json}} 
+-->
+
+<form class="form-control">
+   <label>Favorite programming language</label>
+    <input type="text" value="{{FavoriteLanguage}}" />
+    <input type="button" value="Action" v-on:click="alert('ok');" />
+</form>
+
+@section scripts{
+<script>
+    var app = new Vue(
+        {
+            el: "#app",
+            data: {
+                NameProperty: "Samuel Alexander",
+                LastNameProperty: "Reyes",
+                Country: "El Salvador",
+                Address: { Department: "San Miguel" ,SpecificReference:'San Miguel'},
+                Occupation: "Software Development",
+                FavoriteLanguage:"Javascript"
+            }
+        });
+        
+</script>
+
+}
